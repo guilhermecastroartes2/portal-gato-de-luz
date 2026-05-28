@@ -42,6 +42,8 @@ body {
 
   overflow: hidden;
 
+  will-change: transform;
+
   background:
     radial-gradient(circle at top,
       rgba(30, 40, 80, 0.4),
@@ -145,6 +147,10 @@ body {
 
 .teia-de-luz-container {
 
+  position: relative;
+
+  z-index: 5;
+
   min-height: 100vh;
 
   padding: 2rem;
@@ -155,9 +161,7 @@ body {
 
   align-items: center;
 
-  position: relative;
-
-  z-index: 2;
+  transition: transform 0.1s linear; 
 
 }
 
@@ -354,6 +358,8 @@ header p {
   opacity: 0.35;
 
   filter: blur(80px);
+
+  will-change: transform;
 
   background:
 

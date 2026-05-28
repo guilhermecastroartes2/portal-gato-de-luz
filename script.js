@@ -113,3 +113,32 @@ window.addEventListener("resize", () => {
   canvas.height = window.innerHeight;
 
 });
+
+/* ==========================================================================
+   PARALLAX CÓSMICO
+========================================================================== */
+
+const universo = document.querySelector(".universo");
+
+const nebulosa = document.querySelector(".nebulosa");
+
+const container = document.querySelector(".teia-de-luz-container");
+
+window.addEventListener("scroll", () => {
+
+  /* UNIVERSO */
+
+  universo.style.transform =
+    `translateY(${scrollY * 0.15}px)`;
+
+  /* NEBULOSA */
+
+  nebulosa.style.transform =
+    `translateY(${scrollY * 0.25}px) scale(1.08)`;
+
+  /* CONTEÚDO */
+
+  container.style.transform =
+    `translateY(${scrollY * 0.03}px)`;
+
+}); 
