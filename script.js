@@ -1,22 +1,23 @@
+/* ==========================================================================
+   CANVAS PARTÍCULAS
+========================================================================== */
+
 const canvas = document.getElementById("particulas");
 
 const ctx = canvas.getContext("2d");
 
-/* AJUSTAR TAMANHO */
-
 canvas.width = window.innerWidth;
-
 canvas.height = window.innerHeight;
 
-/* ARRAY */
+/* ==========================================================================
+   ARRAY DE PARTÍCULAS
+========================================================================== */
 
 const particulas = [];
 
-/* QUANTIDADE */
-
-const quantidade = 120;
-
-/* CLASSE */
+/* ==========================================================================
+   CLASSE PARTÍCULA
+========================================================================== */
 
 class Particula {
 
@@ -26,17 +27,17 @@ class Particula {
 
     this.y = Math.random() * canvas.height;
 
-    this.raio = Math.random() * 2 + 1;
+    this.radius = Math.random() * 2;
 
-    this.velocidadeY = Math.random() * 0.5 + 0.2;
+    this.speedY = Math.random() * 0.5 + 0.2;
 
-    this.opacity = Math.random() * 0.5 + 0.2;
+    this.opacity = Math.random();
 
   }
 
   atualizar() {
 
-    this.y -= this.velocidadeY;
+    this.y -= this.speedY;
 
     if (this.y < 0) {
 
@@ -55,13 +56,12 @@ class Particula {
     ctx.arc(
       this.x,
       this.y,
-      this.raio,
+      this.radius,
       0,
       Math.PI * 2
     );
 
-    ctx.fillStyle =
-      `rgba(242, 169, 0, ${this.opacity})`;
+    ctx.fillStyle = `rgba(255,255,255,${this.opacity})`;
 
     ctx.fill();
 
@@ -69,17 +69,21 @@ class Particula {
 
 }
 
-/* CRIAR PARTÍCULAS */
+/* ==========================================================================
+   CRIAR PARTÍCULAS
+========================================================================== */
 
-for (let i = 0; i < quantidade; i++) {
+for (let i = 0; i < 120; i++) {
 
   particulas.push(new Particula());
 
 }
 
-/* LOOP */
+/* ==========================================================================
+   ANIMAÇÃO
+========================================================================== */
 
-function animar() {
+function animarParticulas() {
 
   ctx.clearRect(
     0,
@@ -88,7 +92,7 @@ function animar() {
     canvas.height
   );
 
-  particulas.forEach(particula => {
+  particulas.forEach((particula) => {
 
     particula.atualizar();
 
@@ -96,15 +100,15 @@ function animar() {
 
   });
 
-  requestAnimationFrame(animar);
+  requestAnimationFrame(animarParticulas);
 
 }
 
-/* INICIAR */
+animarParticulas();
 
-animar();
-
-/* RESPONSIVIDADE */
+/* ==========================================================================
+   RESPONSIVIDADE CANVAS
+========================================================================== */
 
 window.addEventListener("resize", () => {
 
@@ -126,19 +130,47 @@ const container = document.querySelector(".teia-de-luz-container");
 
 window.addEventListener("scroll", () => {
 
-  /* UNIVERSO */
+  const scrollY = window.scrollY;
 
   universo.style.transform =
     `translateY(${scrollY * 0.15}px)`;
 
-  /* NEBULOSA */
-
   nebulosa.style.transform =
     `translateY(${scrollY * 0.25}px) scale(1.08)`;
-
-  /* CONTEÚDO */
 
   container.style.transform =
     `translateY(${scrollY * 0.03}px)`;
 
-}); 
+});
+
+/* ==========================================================================
+   ENTRADA CINEMATOGRÁFICA
+========================================================================== */
+
+const paineis = document.querySelectorAll(".painel-hq");
+
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach((entry, index) => {
+
+    if (entry.isIntersecting) {
+
+      setTimeout(() => {
+
+        entry.target.classList.add("painel-visivel");
+
+      }, index * 250);
+
+    }
+
+  });
+
+}, {
+  threshold: 0.2
+});
+
+paineis.forEach((painel) => {
+
+  observer.observe(painel);
+
+});

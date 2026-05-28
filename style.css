@@ -1,5 +1,5 @@
 /* ==========================================================================
-   RESET
+   RESET GERAL
 ========================================================================== */
 
 * {
@@ -14,331 +14,73 @@
 
 body {
 
-  background-color: #0B0C10;
+  background: #050816;
 
-  color: #FFFFFF;
+  color: white;
 
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Comic Neue', cursive;
 
   overflow-x: hidden;
+
+  position: relative;
 
 }
 
 /* ==========================================================================
-   UNIVERSO CÓSMICO
+   UNIVERSO ESTRELADO
 ========================================================================== */
 
 .universo {
 
   position: fixed;
 
-  top: 0;
-  left: 0;
+  inset: 0;
 
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
-  z-index: -2;
+  z-index: -3;
 
-  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 1px, transparent 1px),
+    radial-gradient(circle at 70% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(255,255,255,0.12) 2px, transparent 2px),
+    radial-gradient(circle at 90% 70%, rgba(255,255,255,0.08) 1px, transparent 1px);
+
+  background-size:
+    250px 250px,
+    300px 300px,
+    400px 400px,
+    500px 500px;
+
+  animation: estrelasPiscando 8s linear infinite;
 
   will-change: transform;
 
-  background:
-    radial-gradient(circle at top,
-      rgba(30, 40, 80, 0.4),
-      #0B0C10 70%);
-
 }
 
-/* CAMADAS DE ESTRELAS */
+/* ==========================================================================
+   ANIMAÇÃO DAS ESTRELAS
+========================================================================== */
 
-.universo::before,
-.universo::after {
+@keyframes estrelasPiscando {
 
-  content: "";
-
-  position: absolute;
-
-  width: 200%;
-  height: 200%;
-
-  top: -50%;
-  left: -50%;
-
-  background-repeat: repeat;
-
-}
-
-/* PRIMEIRA CAMADA */
-
-.universo::before {
-
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
-    radial-gradient(2px 2px at 100px 150px, #F2A900, transparent),
-    radial-gradient(1px 1px at 200px 80px, #ffffff, transparent),
-    radial-gradient(2px 2px at 300px 200px, #FFEA00, transparent),
-    radial-gradient(1px 1px at 400px 120px, #ffffff, transparent);
-
-  background-size: 500px 500px;
-
-  opacity: 0.5;
-
-  animation: estrelasMovendo 120s linear infinite;
-
-}
-
-/* SEGUNDA CAMADA */
-
-.universo::after {
-
-  background-image:
-    radial-gradient(1px 1px at 50px 60px, #ffffff, transparent),
-    radial-gradient(2px 2px at 170px 90px, #F2A900, transparent),
-    radial-gradient(1px 1px at 250px 250px, #ffffff, transparent),
-    radial-gradient(2px 2px at 350px 180px, #FFEA00, transparent);
-
-  background-size: 700px 700px;
-
-  opacity: 0.2;
-
-  animation: estrelasMovendo 200s linear infinite;
-
-}
-
-/* ANIMAÇÃO */
-
-@keyframes estrelasMovendo {
-
-  from {
-    transform: translateY(0);
+  0% {
+    opacity: 0.8;
   }
 
-  to {
-    transform: translateY(500px);
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.8;
   }
 
 }
 
 /* ==========================================================================
-   CANVAS DAS PARTÍCULAS
-========================================================================== */
-
-#particulas {
-
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100vh;
-
-  z-index: -1;
-
-  pointer-events: none;
-
-}
-
-/* ==========================================================================
-   CONTAINER PRINCIPAL
-========================================================================== */
-
-.teia-de-luz-container {
-
-  position: relative;
-
-  z-index: 5;
-
-  min-height: 100vh;
-
-  padding: 2rem;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  transition: transform 0.1s linear; 
-
-}
-
-/* ==========================================================================
-   CABEÇALHO
-========================================================================== */
-
-header {
-
-  text-align: center;
-
-  margin-bottom: 2rem;
-
-}
-
-.titulo-hq {
-
-  font-size: 4rem;
-
-  color: #F2A900;
-
-  text-shadow:
-    4px 4px 0px #000000,
-    0 0 10px #F2A900,
-    0 0 20px #FFEA00;
-
-  margin-bottom: 0.5rem;
-
-  letter-spacing: 3px;
-
-  animation: brilhoTitulo 3s ease-in-out infinite;
-
-}
-
-header p {
-
-  font-size: 1.2rem;
-
-  color: #C5C6C7;
-
-  font-style: italic;
-
-}
-
-/* ==========================================================================
-   CAPA
-========================================================================== */
-
-.capa-container {
-
-  width: 100%;
-
-  max-width: 1200px;
-
-  height: 350px;
-
-  margin-bottom: 40px;
-
-  overflow: hidden;
-
-  border: 5px solid #000000;
-
-  border-radius: 6px;
-
-  background-color: #000000;
-
-  position: relative;
-
-  box-shadow:
-    10px 10px 0px #000000,
-    0 0 20px rgba(242, 169, 0, 0.3);
-
-  animation: auraCosmica 5s ease-in-out infinite;
-
-}
-
-.imagem-capa {
-
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-
-  object-position: center;
-
-}
-
-/* ==========================================================================
-   GRID HQ
-========================================================================== */
-
-.grade-hq {
-
-  width: 100%;
-
-  max-width: 1200px;
-
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 25px;
-
-}
-
-/* ==========================================================================
-   PAINÉIS
-========================================================================== */
-
-.painel-hq {
-
-  height: 380px;
-
-  background-color: #000000;
-
-  border: 5px solid #111111;
-
-  border-radius: 6px;
-
-  overflow: hidden;
-
-  cursor: pointer;
-
-  position: relative;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-
-  animation: painelRespirando 4s ease-in-out infinite;
-
-}
-
-/* ==========================================================================
-   IMAGENS
-========================================================================== */
-
-.imagem-hq {
-
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: contain;
-
-  background-color: #000000;
-
-  transition: transform 0.4s ease-in-out;
-
-}
-
-/* ==========================================================================
-   HOVER
-========================================================================== */
-
-.painel-hq:hover {
-
-  border-color: #F2A900;
-
-  box-shadow:
-    0 0 15px #F2A900,
-    0 0 30px #FFEA00;
-
-  transform: translateY(-8px) scale(1.02);
-
-}
-
-.painel-hq:hover .imagem-hq {
-
-  transform: scale(1.05);
-
-}
-
-/* ==========================================================================
-   NEBULOSA CÓSMICA
+   NEBULOSA
 ========================================================================== */
 
 .nebulosa {
@@ -351,7 +93,7 @@ header p {
   width: 140%;
   height: 140%;
 
-  z-index: -1;
+  z-index: -2;
 
   pointer-events: none;
 
@@ -388,13 +130,314 @@ header p {
     );
 
   animation: nebulosaFlutuando 30s ease-in-out infinite alternate;
+
+}
+
+/* ==========================================================================
+   ANIMAÇÃO DA NEBULOSA
+========================================================================== */
+
+@keyframes nebulosaFlutuando {
+
+  0% {
+
+    transform:
+      translate(0px, 0px)
+      scale(1);
+
+  }
+
+  25% {
+
+    transform:
+      translate(-40px, 20px)
+      scale(1.05);
+
+  }
+
+  50% {
+
+    transform:
+      translate(30px, -30px)
+      scale(1.1);
+
+  }
+
+  75% {
+
+    transform:
+      translate(-20px, 40px)
+      scale(1.04);
+
+  }
+
+  100% {
+
+    transform:
+      translate(20px, -20px)
+      scale(1.08);
+
+  }
+
+}
+
+/* ==========================================================================
+   CANVAS PARTÍCULAS
+========================================================================== */
+
+#particulas {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+}
+
+/* ==========================================================================
+   CONTAINER
+========================================================================== */
+
+.teia-de-luz-container {
+
+  position: relative;
+
+  z-index: 5;
+
+  min-height: 100vh;
+
+  padding: 2rem;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  transition: transform 0.1s linear;
+
+}
+
+/* ==========================================================================
+   HEADER
+========================================================================== */
+
+header {
+
+  text-align: center;
+
+  margin-bottom: 2rem;
+
+}
+
+.titulo-hq {
+
+  font-family: 'Bangers', cursive;
+
+  font-size: 5rem;
+
+  color: #F2A900;
+
+  letter-spacing: 4px;
+
+  text-shadow:
+    0 0 10px #F2A900,
+    0 0 20px #F2A900,
+    4px 4px 0px #000000;
+
+}
+
+header p {
+
+  font-size: 1.3rem;
+
+  color: #d7d7d7;
+
+  margin-top: 1rem;
+
+}
+
+/* ==========================================================================
+   CAPA
+========================================================================== */
+
+.capa-container {
+
+  width: 100%;
+
+  max-width: 1200px;
+
+  height: 350px;
+
+  overflow: hidden;
+
+  border: 5px solid #000;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 0 20px rgba(242,169,0,0.5),
+    10px 10px 0px #000;
+
+  margin-bottom: 40px;
+
+  background: #000;
+
+}
+
+.imagem-capa {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+}
+
+/* ==========================================================================
+   GRADE HQ
+========================================================================== */
+
+.grade-hq {
+
+  width: 100%;
+
+  max-width: 1200px;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+
+}
+
+/* ==========================================================================
+   PAINÉIS HQ
+========================================================================== */
+
+.painel-hq {
+
+  height: 380px;
+
+  background-color: #000000;
+
+  border: 5px solid #111111;
+
+  border-radius: 6px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  position: relative;
+
+  opacity: 0;
+
+  transform: translateY(80px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  animation: painelRespirando 4s ease-in-out infinite;
+
+}
+
+/* ==========================================================================
+   PAINEL VISÍVEL
+========================================================================== */
+
+.painel-visivel {
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+/* ==========================================================================
+   ANIMAÇÃO PAINEL
+========================================================================== */
+
+@keyframes painelRespirando {
+
+  0% {
+
+    box-shadow:
+      0 0 10px rgba(242,169,0,0.1);
+
+  }
+
+  50% {
+
+    box-shadow:
+      0 0 25px rgba(242,169,0,0.3);
+
+  }
+
+  100% {
+
+    box-shadow:
+      0 0 10px rgba(242,169,0,0.1);
+
+  }
+
+}
+
+/* ==========================================================================
+   IMAGENS HQ
+========================================================================== */
+
+.imagem-hq {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  transition: transform 0.4s ease;
+
+}
+
+/* ==========================================================================
+   HOVER
+========================================================================== */
+
+.painel-hq:hover {
+
+  border-color: #F2A900;
+
+  box-shadow:
+    0 0 15px #F2A900,
+    0 0 30px #FFEA00;
+
+  transform: scale(1.03);
+
+  z-index: 10;
+
+}
+
+.painel-hq:hover .imagem-hq {
+
+  transform: scale(1.08);
+
 }
 
 /* ==========================================================================
    RESPONSIVIDADE
 ========================================================================== */
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
 
   .grade-hq {
 
@@ -404,13 +447,7 @@ header p {
 
 }
 
-@media (max-width: 700px) {
-
-  .grade-hq {
-
-    grid-template-columns: 1fr;
-
-  }
+@media (max-width: 768px) {
 
   .titulo-hq {
 
@@ -424,130 +461,10 @@ header p {
 
   }
 
-}
+  .grade-hq {
 
-@keyframes brilhoTitulo {
-  0% {
-    
-    text-shadow:
-      4px 4px 0px #000000,
-      0 0 10px #F2A900,
-      0 0 20px #FFEA00;
+    grid-template-columns: 1fr;
 
   }
 
-  50% {
-
-    text-shadow:
-      4px 4px 0px #000000,
-      0 0 20px #F2A900,
-      0 0 40px #FFEA00,
-      0 0 60px #F2A900;
-
-  }
-
-  100% {
-
-    text-shadow:
-      4px 4px 0px #000000,
-      0 0 10px #F2A900,
-      0 0 20px #FFEA00;
-
-  }
-}
-
-@keyframes painelRespirando {
-
-  0% {
-
-    box-shadow:
-      0 0 5px rgba(242, 169, 0, 0.1);
-
-  }
-
-  50% {
-
-    box-shadow:
-      0 0 15px rgba(242, 169, 0, 0.3),
-      0 0 30px rgba(255, 234, 0, 0.2);
-
-  }
-
-  100% {
-
-    box-shadow:
-      0 0 5px rgba(242, 169, 0, 0.1);
-
-  }
-}
-
-@keyframes auraCosmica {
-
-  0% {
-
-    box-shadow:
-      10px 10px 0px #000000,
-      0 0 20px rgba(242, 169, 0, 0.2);
-
-  }
-
-  50% {
-
-    box-shadow:
-      10px 10px 0px #000000,
-      0 0 40px rgba(242, 169, 0, 0.5),
-      0 0 80px rgba(255, 234, 0, 0.3);
-
-  }
-
-  100% {
-
-    box-shadow:
-      10px 10px 0px #000000,
-      0 0 20px rgba(242, 169, 0, 0.2);
-
-  }
-}
-
-@keyframes nebulosaFlutuando {
-
-  0% {
-
-    transform:
-     translate(0px, 0px)
-     scale(1);
-
-  }
-
-  25% {
-
-    transform:
-     translate(-40px, 20px)
-      scale(1.05);
-
-  }
-
-  50% {
-
-    transform:
-     translate(30px, -30px)
-      scale(1.1);
-     
-  }
-
-  75% {
-
-    transform:
-     translate(-20px, 40px)
-      scale(1.04);
-
-  }
-
-  100% {
-
-    transform:
-     translate(20px, -20px)
-     scale(1.08);
-
-  }
 }
