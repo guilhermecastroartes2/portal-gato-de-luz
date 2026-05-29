@@ -174,3 +174,63 @@ paineis.forEach((painel) => {
   observer.observe(painel);
 
 });
+
+/* ==========================================================================
+   CARTAS MÍSTICAS
+========================================================================== */
+
+const cartas = document.querySelectorAll(".carta");
+
+cartas.forEach((carta) => {
+
+  carta.addEventListener("click", () => {
+
+    carta.classList.toggle("virada");
+    
+  });
+
+});
+
+/* ==========================================================================
+   VOZ DO GATO DE LUZ
+========================================================================== */
+
+const botoesAudio =
+  document.querySelectorAll(".botao-audio");
+
+botoesAudio.forEach((botao) => {
+
+  botao.addEventListener("click", (evento) => {
+
+    evento.stopPropagation();
+
+    const carta =
+      botao.closest(".carta-back");
+
+    const titulo =
+      carta.querySelector("h3").innerText;
+
+    const mensagem =
+      carta.querySelector("p").innerText;
+
+    const textCompleto = 
+      `${titulo}. ${mensagem}`;
+
+    const narracao =
+      new SpeechSynthesisUtterance(textCompleto);
+
+    narracao.lang = "pt-BR";
+
+    narracao.rate = 0.9;
+
+    narracao.pitch = 1;
+
+    narracao.volume = 1;
+
+    speechSynthesis.cancel();
+
+    speechSynthesis.speak(narracao);
+    
+  });
+                         
+});
