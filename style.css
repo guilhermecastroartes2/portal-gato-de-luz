@@ -677,6 +677,66 @@ header p {
 }
 
 /* ==========================================================================
+   PARTÍCULAS MÁGICAS
+========================================================================== */
+
+.particula-magica {
+
+  position: absolute;
+
+  width: 10px;
+
+  height: 10px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background: #F2A900;
+
+  box-shadow:
+    0 0 10px #F2A900,
+    0 0 20px #FFEA00,
+    0 0 30px #FFFFFF;
+
+  animation: explodirParticula 1.5s ease-out forwards;
+
+  z-index: 50;
+
+}
+
+/* ==========================================================================
+   ANIMAÇÃO DAS PARTÍCULAS
+========================================================================== */
+
+@keyframes explodirParticula {
+
+  0% {
+
+    opacity: 1;
+
+    transform:
+      translate(0, 0)
+      scale(1);
+
+  }
+
+  100% {
+
+    opacity: 0;
+
+    transform:
+      translate(
+        var(--x),
+        var(--y)
+      )
+      scale(0);
+
+  }
+
+}
+
+/* ==========================================================================
    RESPONSIVIDADE
 ========================================================================== */
 

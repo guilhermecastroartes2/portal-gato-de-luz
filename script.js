@@ -234,3 +234,60 @@ botoesAudio.forEach((botao) => {
   });
 
 });
+
+/* ==========================================================================
+   PARTÍCULAS MÁGICAS DAS CARTAS
+========================================================================== */
+
+cartas.forEach((carta) => {
+
+  carta.addEventListener("click", () => {
+
+    criarParticulasMagicas(carta);
+
+  });
+
+});
+
+/* ==========================================================================
+   FUNÇÃO PARTÍCULAS
+========================================================================== */
+
+function criarParticulasMagicas(carta) {
+
+  for (let i = 0; i < 25; i++) {
+
+    const particula =
+      document.createElement("div");
+
+    particula.classList.add("particula-magica");
+
+    const rect = carta.getBoundingClientRect();
+
+    particula.style.left =
+      rect.width / 2 + "px";
+
+    particula.style.top =
+      rect.height / 2 + "px";
+
+    const x =
+      (Math.random() - 0.5) * 300 + "px";
+
+    const y =
+      (Math.random() - 0.5) * 300 + "px";
+
+    particula.style.setProperty("--x", x);
+
+    particula.style.setProperty("--y", y);
+
+    carta.appendChild(particula);
+
+    setTimeout(() => {
+
+      particula.remove();
+
+    }, 1500);
+
+  }
+
+}
