@@ -449,7 +449,7 @@ header p {
   flex-direction: column;
 
   align-items: center;
-  
+
 }
 
 .titulo-cartas {
@@ -467,7 +467,7 @@ header p {
   text-shadow: 
     0 0 10px #F2A900,
     0 0 25px #F2A900;
-  
+
 }
 
 /* ==========================================================================
@@ -485,7 +485,7 @@ header p {
   gap: 40px;
 
   flex-wrap: wrap;
-  
+
 }
 
 /* ==========================================================================
@@ -501,7 +501,7 @@ header p {
   perspective: 1200px;
 
   cursor: pointer;
-  
+
 }
 
 /* ==========================================================================
@@ -519,7 +519,7 @@ header p {
   transition: transform 1s;
 
   transform-style: preserve-3d;
-  
+
 }
 
 /* ==========================================================================
@@ -529,7 +529,7 @@ header p {
 .carta.virada .carta-inner {
 
   transform: rotateY(180deg);
-  
+
 }
 
 /* ==========================================================================
@@ -546,7 +546,7 @@ header p {
   height: 100%;
 
   border-radius: 20px;
-  
+
   backface-visibility: hidden;
 
   overflow: hidden;
@@ -556,7 +556,7 @@ header p {
   box-shadow:
     0 0 20px rgba(242, 169, 0, 0.2),
     0 0 40px rgba(242, 169, 0, 0.15);
-  
+
 }
 
 /* ==========================================================================
@@ -564,7 +564,7 @@ header p {
 ========================================================================== */
 
 .carta-front {
-  
+
   background: 
     radial-gradient(circle at top, #182848, #050816);
 
@@ -581,7 +581,7 @@ header p {
   text-shadow: 
     0 0 20px #F2A900,
     0 0 40px #F2A900;
-  
+
 }
 
 /* ==========================================================================
@@ -608,7 +608,7 @@ header p {
   justify-content: center;
 
   text-align: center;
-  
+
 }
 
 .carta-back h3 {
@@ -618,7 +618,7 @@ header p {
   color: #F2A900;
 
   margin-bottom: 20px;
-  
+
 }
 
 .carta-back p {
@@ -628,7 +628,52 @@ header p {
   line-height: 1.7;
 
   color: #e5e5e5;
-  
+
+}
+
+/* ==========================================================================
+   BOTÃO DE ÁUDIO
+========================================================================== */
+
+.botao-audio {
+
+  margin-top: 30px;
+
+  padding: 14px 20px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: 
+    linear-gradient(
+      135deg,
+      #F2A900,
+      #FFDD55
+    );
+
+  color: #000;
+
+  font-size: 1rem;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+}
+
+.botao-audio:hover {
+
+  transform: scale(1.05);
+
+  box-shadow:
+    0 0 15px #F2A900,
+    0 0 30px #F2A900;
+
 }
 
 /* ==========================================================================
