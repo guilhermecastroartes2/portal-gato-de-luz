@@ -632,51 +632,6 @@ header p {
 }
 
 /* ==========================================================================
-   BOTÃO DE ÁUDIO
-========================================================================== */
-
-.botao-audio {
-
-  margin-top: 30px;
-
-  padding: 14px 20px;
-
-  border: none;
-
-  border-radius: 12px;
-
-  background: 
-    linear-gradient(
-      135deg,
-      #F2A900,
-      #FFDD55
-    );
-
-  color: #000;
-
-  font-size: 1rem;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  
-}
-
-.botao-audio:hover {
-
-  transform: scale(1.05);
-
-  box-shadow:
-    0 0 15px #F2A900,
-    0 0 30px #F2A900;
-  
-}
-
-/* ==========================================================================
    RESPONSIVIDADE
 ========================================================================== */
 
