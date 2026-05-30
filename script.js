@@ -291,3 +291,41 @@ function criarParticulasMagicas(carta) {
   }
 
 }
+
+/* ==========================================================================
+   SOM AMBIENTE
+========================================================================== */
+
+const audio =
+  document.getElementById("audioCosmico");
+
+const botaoSom =
+  document.getElementById("botaoSom");
+
+let tocando = false;
+
+botaoSom.addEventListener("click", () => {
+
+  if (!tocando) {
+
+    audio.volume = 0.25;
+
+    audio.play();
+
+    botaoSom.innerText =
+      "🔇 Desativar Som";
+
+    tocando = true;
+
+  } else {
+
+    audio.pause();
+
+    botaoSom.innerText =
+      "🔊 Ativar Som";
+
+    tocando = false;
+
+  }
+
+});

@@ -737,6 +737,61 @@ header p {
 }
 
 /* ==========================================================================
+   BOTÃO DE SOM
+========================================================================== */
+
+#botaoSom {
+
+  position: fixed;
+
+  bottom: 25px;
+
+  right: 25px;
+
+  z-index: 999;
+
+  padding: 15px 25px;
+
+  border: none;
+
+  border-radius: 50px;
+
+  cursor: pointer;
+
+  font-size: 1rem;
+
+  font-weight: bold;
+
+  background:
+    linear-gradient(
+      135deg,
+      #F2A900,
+      #ffdd55
+    );
+
+  color: #000;
+
+  box-shadow:
+    0 0 15px #F2A900,
+    0 0 30px rgba(242,169,0,0.4);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+}
+
+#botaoSom:hover {
+
+  transform: scale(1.05);
+
+  box-shadow:
+    0 0 20px #F2A900,
+    0 0 40px #F2A900;
+
+}
+
+/* ==========================================================================
    RESPONSIVIDADE
 ========================================================================== */
 
